@@ -30,7 +30,7 @@
             text-align: center;
         }
 
-        /* --- PANTALLA 1: ESTILO ELEGANTE --- */
+        /* --- PANTALLA 1: ELEGANTE --- */
         .intro-screen {
             position: relative;
             padding: 40px 24px;
@@ -96,33 +96,41 @@
             letter-spacing: 0.32em;
             text-transform: uppercase;
             color: rgba(255, 245, 250, 0.86);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        .btn {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            border: 1px solid rgba(243, 183, 209, 0.4);
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 6px 0;
+        /* Reproductor de YouTube Estilizado */
+        .youtube-box {
+            margin: 15px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border: 1px solid rgba(243, 183, 209, 0.3);
+        }
+
+        .youtube-box iframe {
             width: 100%;
+            height: 80px;
+            border: none;
+            display: block;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #C25B75, #A84B62);
+            color: white;
             border: none;
             box-shadow: 0 4px 15px rgba(194, 91, 117, 0.4);
             font-size: 15px;
+            font-weight: 600;
             padding: 14px 28px;
-            margin-top: 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
         }
 
-        .btn:active {
+        .btn-primary:active {
             transform: scale(0.97);
         }
 
@@ -173,16 +181,6 @@
             font-size: 22px;
         }
 
-        #musicPlayer {
-            position: fixed;
-            bottom: -50px;
-            left: -50px;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
@@ -200,8 +198,12 @@
             <p class="subtitle">Mi Loba, tu Lobo. Y que la distancia nunca nos quite las ganas de elegirnos.</p>
             <div class="signature">Hecho con amor, para ti</div>
 
-            <button class="btn" id="musicBtn" onclick="toggleMusic()">🎶 Escuchar nuestra canción</button>
-            <button class="btn btn-primary" onclick="goToLetter()">Abrir mi carta 💌</button>
+            <!-- REPRODUCTOR DIRECTO DE YOUTUBE -->
+            <div class="youtube-box">
+                <iframe src="https://www.youtube-nocookie.com/embed/AJGbkF6Itd4?playsinline=1" title="Nuestra canción" allow="autoplay; encrypted-media"></iframe>
+            </div>
+
+            <button class="btn-primary" onclick="goToLetter()">Abrir mi carta 💌</button>
         </div>
 
         <!-- PANTALLA 2 -->
@@ -219,7 +221,7 @@ Sé que apenas es nuestro primer mes, pero me hace mucha ilusión todo lo que es
 
 Gracias por llegar a mi vida, por hacerme sentir querida y por permitirme conocerte cada día un poquito más.
 
-No quiero apresurar nuestra historia, quiero disfrutarla, vivirla y seguir eligiéndote. Todavía tenemos muchísimas cosas pendientes, muchos abrazos que darnos, muchos besitos y nuestros chilpayatitos que mantener. JAJAJA.
+No quiero apresurar nuestra historia, quiero disfrutarla, vivirla y seguir eligiéndote. Todavía tenemos muchísimas cosas pendientes, muchos abrazos que darnos, muchos besitos que dar y nuestros chilpayatitos que mantener. JAJAJA.
 
 Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
             </div>
@@ -228,40 +230,8 @@ Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
         </div>
     </div>
 
-    <!-- REPRODUCTOR -->
-    <div id="musicPlayer"></div>
-
     <script>
-        let isPlaying = false;
-
-        function startSong() {
-            const player = document.getElementById('musicPlayer');
-            const musicBtn = document.getElementById('musicBtn');
-            player.innerHTML = '<iframe width="100" height="100" src="https://www.youtube.com/embed/AJGbkF6Itd4?autoplay=1&playsinline=1&enablejsapi=1" allow="autoplay"></iframe>';
-            musicBtn.innerText = '⏸️ Pausar música';
-            isPlaying = true;
-        }
-
-        function stopSong() {
-            const player = document.getElementById('musicPlayer');
-            const musicBtn = document.getElementById('musicBtn');
-            player.innerHTML = '';
-            musicBtn.innerText = '🎶 Escuchar nuestra canción';
-            isPlaying = false;
-        }
-
-        function toggleMusic() {
-            if (!isPlaying) {
-                startSong();
-            } else {
-                stopSong();
-            }
-        }
-
         function goToLetter() {
-            if (!isPlaying) {
-                startSong();
-            }
             document.body.style.backgroundColor = '#FFF6F2';
             document.getElementById('introScreen').style.display = 'none';
             document.getElementById('letterScreen').style.display = 'block';
