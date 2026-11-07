@@ -19,7 +19,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             background-color: #090914;
             transition: background-color 0.8s ease;
         }
@@ -30,16 +30,14 @@
             text-align: center;
         }
 
-        /* --- PANTALLA 1: ELEGANTE --- */
+        /* --- PANTALLA 1: ELEGANTE (SIN RECORTE) --- */
         .intro-screen {
             position: relative;
-            padding: 40px 24px;
+            padding: 30px 20px;
             border-radius: 20px;
-            overflow: hidden;
-            background: rgba(18, 14, 25, 0.85);
+            background: rgba(18, 14, 25, 0.88);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
             animation: fadeIn 0.8s ease forwards;
         }
 
@@ -48,6 +46,7 @@
             position: absolute;
             inset: 0;
             z-index: -1;
+            border-radius: 20px;
             background-image: url("foto-mi-loba-su-lobo.jpg");
             background-position: center center;
             background-repeat: no-repeat;
@@ -60,14 +59,14 @@
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: #f4c6da;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
         .intro-title {
-            font-size: 28px;
+            font-size: 26px;
             color: #ffffff;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             line-height: 1.25;
         }
 
@@ -81,14 +80,14 @@
             width: 54px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #f3b7d1, transparent);
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
         }
 
         .subtitle {
-            font-size: 14px;
+            font-size: 13px;
             color: #f2c9db;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
 
         .signature {
@@ -96,10 +95,10 @@
             letter-spacing: 0.32em;
             text-transform: uppercase;
             color: rgba(255, 245, 250, 0.86);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        /* Reproductor de YouTube */
+        /* Reproductor de YouTube Ajustado */
         .youtube-box {
             margin: 15px 0;
             border-radius: 12px;
@@ -146,8 +145,8 @@
         }
 
         .photo-frame {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             margin: 0 auto 20px;
             border-radius: 50%;
             overflow: hidden;
@@ -163,13 +162,13 @@
 
         .letter-title {
             font-family: 'Caveat', cursive;
-            font-size: 30px;
+            font-size: 28px;
             color: #C25B75;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .letter-body {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
             color: #4A3B43;
             text-align: left;
@@ -194,4 +193,27 @@
         <div class="intro-screen" id="introScreen">
             <div class="eyebrow">Mi Loba Su Lobo</div>
             <h1 class="intro-title"><span>Siempre uno, sin el otro.</span></h1>
-            <div class
+            <div class="rule"></div>
+            <p class="subtitle">Mi Loba, tu Lobo. Y que la distancia nunca nos quite las ganas de elegirnos.</p>
+            <div class="signature">Hecho con amor, para ti</div>
+
+            <!-- CANCIÓN CUCO -->
+            <div class="youtube-box">
+                <iframe src="https://www.youtube-nocookie.com/embed/AjGbkFqi67c?playsinline=1" title="Cuco - Lo Que Siento" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+            </div>
+
+            <button class="btn-primary" onclick="goToLetter()">Abrir mi carta 💌</button>
+        </div>
+
+        <!-- PANTALLA 2 -->
+        <div class="letter-screen" id="letterScreen">
+            <div class="photo-frame">
+                <img src="foto-mi-loba-su-lobo.jpg" alt="Foto juntos">
+            </div>
+
+            <h1 class="letter-title">Feliz primer mesesario, mi lobito. 🐺❤️</h1>
+
+            <div class="letter-body">
+¿Quién diría que de un simple focus terminaríamos aquí? JAJAJA. A veces me pongo a pensar en lo curioso que fue conocerte, cómo empezamos hablando sin imaginar todo lo que vendría después.
+
+Sé que apenas es nuestro primer mes
