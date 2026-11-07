@@ -1,68 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090914">
-<meta name="description" content="Un pequeño rincón hecho para mi loba y su lobo.">
-<title>Mi Loba ♡ Su Lobo</title>
-<style>
-:root{color-scheme:dark;--pink:#f3b7d1;--white:#fff8fc}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#090914;color:var(--white);font-family:Georgia,"Times New Roman",serif}
-body{min-height:100svh;overflow:hidden}
-.scene{position:relative;min-height:100svh;display:grid;place-items:center;isolation:isolate;overflow:hidden;padding:28px 22px}
-.scene:before{content:"";position:absolute;inset:-3%;z-index:-3;background:url("foto-mi-loba-su-lobo.jpg") center 42%/cover no-repeat;filter:brightness(.57) saturate(.92);animation:drift 24s ease-in-out infinite alternate}
-.scene:after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(5,5,17,.28),rgba(8,6,19,.36) 35%,rgba(5,5,15,.78)),radial-gradient(ellipse at 50% 45%,rgba(226,116,169,.14),transparent 58%)}
-.glow{position:absolute;width:70vw;height:70vw;max-width:520px;max-height:520px;border-radius:50%;background:rgba(224,117,170,.10);filter:blur(70px);z-index:-1;animation:pulse 7s ease-in-out infinite}
-.content{width:min(100%,680px);text-align:center;animation:appear 1.8s cubic-bezier(.2,.7,.2,1) both}
-.eyebrow{font:600 10px/1.5 system-ui,sans-serif;letter-spacing:.38em;text-transform:uppercase;color:#f4c6da;margin-bottom:25px}
-h1{font-size:clamp(31px,8vw,61px);line-height:1.14;font-weight:400;letter-spacing:-.035em;margin:0 auto 22px;text-wrap:balance;text-shadow:0 4px 30px #080611}
-h1 em{color:var(--pink);font-style:italic}
-.rule{width:54px;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent);margin:0 auto 22px}
-.sub{font-size:clamp(14px,3.8vw,17px);line-height:1.7;color:rgba(255,245,250,.86);letter-spacing:.025em}
-.signature{margin-top:34px;font:500 10px/1.6 system-ui,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#f2c3d8}
-.music{position:fixed;left:50%;bottom:max(25px,env(safe-area-inset-bottom));transform:translateX(-50%);border:1px solid rgba(255,220,237,.55);background:rgba(14,10,24,.52);backdrop-filter:blur(14px);color:#fff4fa;border-radius:999px;padding:12px 19px;font:500 11px system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.3s}
-.music:hover{background:rgba(213,126,167,.3);border-color:#f7c5dc}
-.music span{color:var(--pink);margin-right:8px}
-#player{position:fixed;width:1px;height:1px;opacity:.01;pointer-events:none;left:-10px;bottom:-10px}
-.heart{position:absolute;bottom:12%;left:50%;font-size:13px;color:#f5bfd8;opacity:.7;animation:float 5s ease-in-out infinite}
-@keyframes appear{from{opacity:0;transform:translateY(22px);filter:blur(7px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-@keyframes drift{from{transform:scale(1)}to{transform:scale(1.09) translate3d(1%,-1%,0)}}
-@keyframes pulse{0%,100%{transform:scale(.9);opacity:.5}50%{transform:scale(1.12);opacity:1}}
-@keyframes float{0%,100%{transform:translate(-50%,0);opacity:.35}50%{transform:translate(-50%,-12px);opacity:.9}}
-@media(min-width:700px){.scene:before{background-position:center 38%}.content{padding:40px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario, Mi Lobito ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #FFF6F2;
+            font-family: 'Montserrat', sans-serif;
+            color: #5A434D;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Pantalla del sobre */
+        .envelope-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 20px;
+            box-shadow: 0 10px 30px rgba(194, 91, 117, 0.15);
+            border: 2px solid #E8A598;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-open {
+            background: linear-gradient(135deg, #C25B75, #A84B62);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(194, 91, 117, 0.3);
+            transition: all 0.2s ease;
+            margin-top: 15px;
+        }
+
+        .btn-open:active {
+            transform: scale(0.95);
+        }
+
+        /* Pantalla de la carta escondida */
+        .letter-card {
+            display: none;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(194, 91, 117, 0.15);
+            border: 2px solid #E8A598;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .photo-frame {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #E8A598;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .letter-title {
+            font-family: 'Caveat', cursive;
+            font-size: 32px;
+            color: #C25B75;
+            margin-bottom: 20px;
+        }
+
+        .letter-body {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4A3B43;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        .footer-heart {
+            margin-top: 25px;
+            font-size: 24px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-<main class="scene">
-  <div class="glow"></div>
-  <section class="content" aria-label="Mensaje romántico">
-    <div class="eyebrow">Mi Loba · Su Lobo</div>
-    <h1>«<em>Siempre uno, sin el otro.</em>»</h1>
-    <div class="rule"></div>
-    <div class="sub">Mi loba, tu lobo. Y que la distancia nunca nos quite las ganas de elegirnos. ♡</div>
-    <div class="signature">Hecho con amor, para ti</div>
-  </section>
-  <div class="heart">♡</div>
-</main>
-<button class="music" id="music" type="button"><span>♫</span> Escuchar nuestra canción</button>
-<div id="player" aria-hidden="true"></div>
-<script>
-let playing=false;
-document.getElementById('music').addEventListener('click',()=>{
- const p=document.getElementById('player');
- if(!playing){
-   p.innerHTML='<iframe title="Nuestra canción" width="1" height="1" src="https://www.youtube-nocookie.com/embed/AjGkbFqi67c?autoplay=1&loop=1&playlist=AjGkbFqi67c" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>';
-   document.getElementById('music').innerHTML='<span>♫</span> Pausar música';
-   playing=true;
- }else{
-   p.innerHTML='';
-   document.getElementById('music').innerHTML='<span>♫</span> Escuchar nuestra canción';
-   playing=false;
- }
-});
-</script>
+
+    <div class="container">
+        <!-- SOBRE CERRADO -->
+        <div class="envelope-card" id="envelope">
+            <span class="envelope-icon">💌</span>
+            <h2 style="color: #C25B75; margin-bottom: 10px;">Para mi lobito 🐺❤️</h2>
+            <p style="font-size: 14px; color: #8C6B7B;">Tienes un mensaje especial esperando por ti.</p>
+            <button class="btn-open" onclick="openLetter()">Toca para abrir 💖</button>
+        </div>
+
+        <!-- CARTA ABIERTA -->
+        <div class="letter-card" id="letter">
+            <div class="photo-frame">
+                <img src="foto-mi-loba-su-lobo.jpg" alt="Foto juntos">
+            </div>
+
+            <h1 class="letter-title">Feliz primer mesesario, mi lobito. 🐺❤️</h1>
+
+            <div class="letter-body">
+¿Quién diría que de un simple focus terminaríamos aquí? JAJAJA. A veces me pongo a pensar en lo curioso que fue conocerte, cómo empezamos hablando sin imaginar todo lo que vendría después.
+
+Sé que apenas es nuestro primer mes, pero me hace mucha ilusión todo lo que estamos construyendo. Me gustan nuestras conversaciones, nuestras tonterías, nuestras llamadas, jugar juntos y hasta esos momentos en los que simplemente estamos haciendo nuestras cosas, pero acompañándonos.
+
+Gracias por llegar a mi vida, por hacerme sentir querida y por permitirme conocerte cada día un poquito más.
+
+No quiero apresurar nuestra historia, quiero disfrutarla, vivirla y seguir eligiéndote. Todavía tenemos muchísimas cosas pendientes, muchos abrazos que darnos y una cantidad preocupante de hijos que mantener. JAJAJA.
+
+Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
+            </div>
+
+            <div class="footer-heart">✨ 🐺💖🐺 ✨</div>
+        </div>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('envelope').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
