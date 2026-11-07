@@ -25,12 +25,12 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 450px;
             width: 100%;
             text-align: center;
         }
 
-        /* --- PANTALLA 1: ESTILO ORIGINAL --- */
+        /* --- PANTALLA 1: ESTILO ELEGANTE (CON FIX DE IMAGEN) --- */
         .intro-screen {
             position: relative;
             padding: 40px 24px;
@@ -43,12 +43,16 @@
             animation: fadeIn 0.8s ease forwards;
         }
 
+        /* Arreglo para que la foto cubra todo SIN repetirse */
         .intro-screen::before {
             content: "";
             position: absolute;
-            inset: -5%;
+            inset: 0;
             z-index: -1;
-            background: url("foto-mi-loba-su-lobo.jpg") center 42%/cover no-repeat;
+            background-image: url("foto-mi-loba-su-lobo.jpg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
             filter: brightness(0.35) contrast(1.1);
         }
 
@@ -97,7 +101,7 @@
         }
 
         .btn {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
             border: 1px solid rgba(243, 183, 209, 0.4);
             padding: 12px 24px;
@@ -170,14 +174,6 @@
             font-size: 22px;
         }
 
-        .audio-wrapper {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-            width: 1px;
-            height: 1px;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
@@ -186,261 +182,10 @@
 </head>
 <body>
 
-    <div class="container">
-        <!-- PANTALLA 1 -->
-        <div class="intro-screen" id="introScreen">
-            <div class="eyebrow">Mi Loba Su Lobo</div>
-            <h1 class="intro-title"><span>Siempre uno, sin el otro.</span></h1>
-            <div class="rule"></div>
-            <p class="subtitle">Mi Loba, tu Lobo. Y que la distancia nunca nos quite las ganas de elegirnos.</p>
-            <div class="signature">Hecho con amor, para ti</div>
-
-            <button class="btn" id="musicBtn" onclick="toggleMusic()">🎶 Escuchar nuestra canción</button>
-            <button class="btn btn-primary" onclick="goToLetter()">Abrir mi carta 💌</button>
-        </div>
-
-        <!-- PANTALLA 2 -->
-        <div class="letter-screen" id="letterScreen">
-            <div class="photo-frame">
-                <img src="foto-mi-loba-su-lobo.jpg" alt="Foto juntos">
-            </div>
-
-            <h1 class="letter-title">Feliz primer mesesario, mi lobito. 🐺❤️</h1>
-
-            <div class="letter-body">
-¿Quién diría que de un simple focus terminaríamos aquí? JAJAJA. A veces me pongo a pensar en lo curioso que fue conocerte, cómo empezamos hablando sin imaginar todo lo que vendría después.
-
-Sé que apenas es nuestro primer mes, pero me hace mucha ilusión todo lo que estamos construyendo. Me gustan nuestras conversaciones, nuestras tonterías, nuestras llamadas, jugar juntos y hasta esos momentos en los que simplemente estamos haciendo nuestras cosas, pero acompañándonos.
-
-Gracias por llegar a mi vida, por hacerme sentir querida y por permitirme conocerte cada día un poquito más.
-
-No quiero apresurar nuestra historia, quiero disfrutarla, vivirla y seguir eligiéndote. Todavía tenemos muchísimas cosas pendientes, muchos abrazos que darnos y una cantidad preocupante de hijos que mantener. JAJAJA.
-
-Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
-            </div>
-
-            <div class="footer-heart">✨ 🐺💖🐺 ✨</div>
-        </div>
-    </div>
-
-    <div class="audio-wrapper" id="player"></div>
-
-    <script>
-        let isPlaying = false;
-
-        function toggleMusic() {
-            const player = document.getElementById('player');
-            const musicBtn = document.getElementById('musicBtn');
-            
-            if (!isPlaying) {
-                player.innerHTML = '<iframe width="200" height="200" src="https://www.youtube.com/embed/AJGbkF6Itd4?autoplay=1&enablejsapi=1" allow="autoplay; encrypted-media"></iframe>';
-                musicBtn.innerText = '⏸️ Pausar música';
-                isPlaying = true;
-            } else {
-                player.innerHTML = '';
-                musicBtn.innerText = '🎶 Escuchar nuestra canción';
-                isPlaying = false;
-            }
-        }
-
-        function goToLetter() {
-            if (!isPlaying) {
-                toggleMusic(); // Activa la música al abrir la carta si aún no la había encendido
-            }
-            document.body.style.backgroundColor = '#FFF6F2';
-            document.getElementById('introScreen').style.display = 'none';
-            document.getElementById('letterScreen').style.display = 'block';
-        }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Mi Loba Su Lobo ❤️</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;600&display=swap');
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background-color: #090914;
-            transition: background-color 0.8s ease;
-        }
-
-        .container {
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* --- PANTALLA 1: ESTILO ORIGINAL --- */
-        .intro-screen {
-            position: relative;
-            padding: 40px 24px;
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(18, 14, 25, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        .intro-screen::before {
-            content: "";
-            position: absolute;
-            inset: -5%;
-            z-index: -1;
-            background: url("foto-mi-loba-su-lobo.jpg") center 42%/cover no-repeat;
-            filter: brightness(0.35) contrast(1.1);
-        }
-
-        .eyebrow {
-            font-size: 11px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: #f4c6da;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .intro-title {
-            font-size: 28px;
-            color: #ffffff;
-            margin-bottom: 16px;
-            line-height: 1.25;
-        }
-
-        .intro-title span {
-            font-family: Georgia, serif;
-            font-style: italic;
-            color: #f3b7d1;
-        }
-
-        .rule {
-            width: 54px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #f3b7d1, transparent);
-            margin: 0 auto 20px;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: #f2c9db;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .signature {
-            font-size: 10px;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: rgba(255, 245, 250, 0.86);
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background: transparent;
-            color: #ffffff;
-            border: 1px solid rgba(243, 183, 209, 0.4);
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 6px 0;
-            width: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #C25B75, #A84B62);
-            border: none;
-            box-shadow: 0 4px 15px rgba(194, 91, 117, 0.4);
-            font-size: 15px;
-            padding: 14px 28px;
-            margin-top: 15px;
-        }
-
-        .btn:active {
-            transform: scale(0.97);
-        }
-
-        /* --- PANTALLA 2: CARTA ROSA Y CREMA --- */
-        .letter-screen {
-            display: none;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px rgba(194, 91, 117, 0.15);
-            border: 2px solid #E8A598;
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        .photo-frame {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid #E8A598;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .letter-title {
-            font-family: 'Caveat', cursive;
-            font-size: 30px;
-            color: #C25B75;
-            margin-bottom: 20px;
-        }
-
-        .letter-body {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #4A3B43;
-            text-align: left;
-            white-space: pre-line;
-        }
-
-        .footer-heart {
-            margin-top: 25px;
-            font-size: 22px;
-        }
-
-        .audio-wrapper {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-            width: 1px;
-            height: 1px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body>
+    <!-- REPRODUCTOR DE AUDIO AUDIO HTML5 (COMPATIBLE CON CELULARES) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://ia600908.us.archive.org/19/items/y2mate.is-music-for-romantic-moments-or-love-letters-128k/y2mate.is-music-for-romantic-moments-or-love-letters-128k.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
         <!-- PANTALLA 1 -->
@@ -479,21 +224,21 @@ Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
         </div>
     </div>
 
-    <div class="audio-wrapper" id="player"></div>
-
     <script>
+        const audio = document.getElementById('bgMusic');
         let isPlaying = false;
 
         function toggleMusic() {
-            const player = document.getElementById('player');
             const musicBtn = document.getElementById('musicBtn');
-            
             if (!isPlaying) {
-                player.innerHTML = '<iframe width="200" height="200" src="https://www.youtube.com/embed/AJGbkF6Itd4?autoplay=1&enablejsapi=1" allow="autoplay; encrypted-media"></iframe>';
-                musicBtn.innerText = '⏸️ Pausar música';
-                isPlaying = true;
+                audio.play().then(() => {
+                    musicBtn.innerText = '⏸️ Pausar música';
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log("Error de audio: ", err);
+                });
             } else {
-                player.innerHTML = '';
+                audio.pause();
                 musicBtn.innerText = '🎶 Escuchar nuestra canción';
                 isPlaying = false;
             }
@@ -501,7 +246,9 @@ Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
 
         function goToLetter() {
             if (!isPlaying) {
-                toggleMusic(); // Activa la música al abrir la carta si aún no la había encendido
+                audio.play().then(() => {
+                    isPlaying = true;
+                }).catch(e => console.log(e));
             }
             document.body.style.backgroundColor = '#FFF6F2';
             document.getElementById('introScreen').style.display = 'none';
