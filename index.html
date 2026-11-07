@@ -19,8 +19,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 15px;
             background-color: #090914;
+            /* Fondo que cubre toda la pantalla del teléfono */
+            background-image: linear-gradient(rgba(9, 9, 20, 0.75), rgba(9, 9, 20, 0.75)), url("foto-mi-loba-su-lobo.jpg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
             transition: background-color 0.8s ease;
         }
 
@@ -30,44 +36,32 @@
             text-align: center;
         }
 
-        /* --- PANTALLA 1: ELEGANTE Y ULTRA COMPACTA --- */
+        /* --- PANTALLA 1: TARJETA CRISTALIZADA --- */
         .intro-screen {
             position: relative;
-            padding: 20px 16px;
-            border-radius: 18px;
-            background: rgba(18, 14, 25, 0.92);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            padding: 30px 20px;
+            border-radius: 20px;
+            background: rgba(18, 14, 25, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
             animation: fadeIn 0.6s ease forwards;
         }
 
-        .intro-screen::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            border-radius: 18px;
-            background-image: url("foto-mi-loba-su-lobo.jpg");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            filter: brightness(0.3) contrast(1.1);
-        }
-
         .eyebrow {
-            font-size: 10px;
-            letter-spacing: 0.25em;
+            font-size: 11px;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
             color: #f4c6da;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .intro-title {
-            font-size: 20px;
+            font-size: 24px;
             color: #ffffff;
-            margin-bottom: 6px;
-            line-height: 1.2;
+            margin-bottom: 10px;
+            line-height: 1.25;
         }
 
         .intro-title span {
@@ -77,39 +71,40 @@
         }
 
         .rule {
-            width: 40px;
+            width: 45px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #f3b7d1, transparent);
-            margin: 0 auto 8px;
+            margin: 0 auto 12px;
         }
 
         .subtitle {
-            font-size: 12px;
+            font-size: 13px;
             color: #f2c9db;
-            line-height: 1.35;
-            margin-bottom: 8px;
+            line-height: 1.45;
+            margin-bottom: 12px;
         }
 
         .signature {
-            font-size: 9px;
-            letter-spacing: 0.2em;
+            font-size: 10px;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
             color: rgba(255, 245, 250, 0.8);
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
 
-        /* Reproductor Barra de YouTube */
+        /* Reproductor con altura ideal para tocar Play directamente */
         .youtube-box {
-            margin: 8px 0;
-            border-radius: 10px;
+            margin: 15px 0;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            border: 1px solid rgba(243, 183, 209, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(243, 183, 209, 0.4);
+            background: #000;
         }
 
         .youtube-box iframe {
             width: 100%;
-            height: 60px;
+            height: 180px;
             border: none;
             display: block;
         }
@@ -118,14 +113,14 @@
             background: linear-gradient(135deg, #C25B75, #A84B62);
             color: white;
             border: none;
-            box-shadow: 0 4px 12px rgba(194, 91, 117, 0.4);
-            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(194, 91, 117, 0.4);
+            font-size: 15px;
             font-weight: 600;
-            padding: 11px 18px;
-            border-radius: 22px;
+            padding: 13px 22px;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-top: 6px;
+            margin-top: 10px;
             width: 100%;
         }
 
@@ -197,9 +192,9 @@
             <p class="subtitle">Mi Loba, tu Lobo. Y que la distancia nunca nos quite las ganas de elegirnos.</p>
             <div class="signature">Hecho con amor, para ti</div>
 
-            <!-- NUEVA CANCIÓN DE YOUTUBE -->
+            <!-- REPRODUCTOR DIRECTO -->
             <div class="youtube-box">
-                <iframe src="https://www.youtube-nocookie.com/embed/9wiEM0s4aCQ?playsinline=1" title="Nuestra canción" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                <iframe src="https://www.youtube-nocookie.com/embed/9wiEM0s4aCQ?playsinline=1&rel=0" title="Nuestra canción" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
             </div>
 
             <button class="btn-primary" onclick="goToLetter()">Abrir mi carta 💌</button>
@@ -231,6 +226,7 @@ Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
 
     <script>
         function goToLetter() {
+            document.body.style.backgroundImage = 'none';
             document.body.style.backgroundColor = '#FFF6F2';
             document.getElementById('introScreen').style.display = 'none';
             document.getElementById('letterScreen').style.display = 'block';
