@@ -30,7 +30,7 @@
             text-align: center;
         }
 
-        /* --- PANTALLA 1: ESTILO ELEGANTE (CON FIX DE IMAGEN) --- */
+        /* --- PANTALLA 1: ESTILO ELEGANTE --- */
         .intro-screen {
             position: relative;
             padding: 40px 24px;
@@ -43,7 +43,6 @@
             animation: fadeIn 0.8s ease forwards;
         }
 
-        /* Arreglo para que la foto cubra todo SIN repetirse */
         .intro-screen::before {
             content: "";
             position: absolute;
@@ -174,6 +173,16 @@
             font-size: 22px;
         }
 
+        #musicPlayer {
+            position: fixed;
+            bottom: -50px;
+            left: -50px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
@@ -181,11 +190,6 @@
     </style>
 </head>
 <body>
-
-    <!-- REPRODUCTOR DE AUDIO AUDIO HTML5 (COMPATIBLE CON CELULARES) -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://ia600908.us.archive.org/19/items/y2mate.is-music-for-romantic-moments-or-love-letters-128k/y2mate.is-music-for-romantic-moments-or-love-letters-128k.mp3" type="audio/mpeg">
-    </audio>
 
     <div class="container">
         <!-- PANTALLA 1 -->
@@ -215,7 +219,7 @@ Sé que apenas es nuestro primer mes, pero me hace mucha ilusión todo lo que es
 
 Gracias por llegar a mi vida, por hacerme sentir querida y por permitirme conocerte cada día un poquito más.
 
-No quiero apresurar nuestra historia, quiero disfrutarla, vivirla y seguir eligiéndote. Todavía tenemos muchísimas cosas pendientes, muchos abrazos que darnos y nuestros chilpayatitos que mantener. JAJAJA.
+No quiero apresurar nuestra historia, quiero disfrutarla, vivirla y seguir eligiéndote. Todavía tenemos muchísimas cosas pendientes, muchos abrazos que darnos, muchos besitos y nuestros chilpayatitos que mantener. JAJAJA.
 
 Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
             </div>
@@ -224,31 +228,39 @@ Te amo muchísimo, mi niño. Nuestro primer mes de muchos. ❤️🐺
         </div>
     </div>
 
+    <!-- REPRODUCTOR -->
+    <div id="musicPlayer"></div>
+
     <script>
-        const audio = document.getElementById('bgMusic');
         let isPlaying = false;
 
-        function toggleMusic() {
+        function startSong() {
+            const player = document.getElementById('musicPlayer');
             const musicBtn = document.getElementById('musicBtn');
+            player.innerHTML = '<iframe width="100" height="100" src="https://www.youtube.com/embed/AJGbkF6Itd4?autoplay=1&playsinline=1&enablejsapi=1" allow="autoplay"></iframe>';
+            musicBtn.innerText = '⏸️ Pausar música';
+            isPlaying = true;
+        }
+
+        function stopSong() {
+            const player = document.getElementById('musicPlayer');
+            const musicBtn = document.getElementById('musicBtn');
+            player.innerHTML = '';
+            musicBtn.innerText = '🎶 Escuchar nuestra canción';
+            isPlaying = false;
+        }
+
+        function toggleMusic() {
             if (!isPlaying) {
-                audio.play().then(() => {
-                    musicBtn.innerText = '⏸️ Pausar música';
-                    isPlaying = true;
-                }).catch(err => {
-                    console.log("Error de audio: ", err);
-                });
+                startSong();
             } else {
-                audio.pause();
-                musicBtn.innerText = '🎶 Escuchar nuestra canción';
-                isPlaying = false;
+                stopSong();
             }
         }
 
         function goToLetter() {
             if (!isPlaying) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                }).catch(e => console.log(e));
+                startSong();
             }
             document.body.style.backgroundColor = '#FFF6F2';
             document.getElementById('introScreen').style.display = 'none';
